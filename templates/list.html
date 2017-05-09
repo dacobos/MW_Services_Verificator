@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="content">
+  <h1>List of Services</h1>
+  <br>
+
+<div class="tables">
+
+  <form action="{{url_for('applyFilter')}}" method='POST'>
+<table>
+  <tr>
+    <td><input type="text" name="filter"  placeholder="Ex:vplsId = 'VLAN100'"></td>
+    <td><input type="submit" value="Apply Filter"></td>
+  </tr>
+</table>
+</form>
+<br>
+<table style="display: table;" id="list">
+  <tr>
+    <th>nodoOrigen</th>
+    <th>nodoDestino</th>
+    <th>pwId</th>
+    <th>localInterface</th>
+    <th>remoteInterface</th>
+    <th>vlan</th>
+    <th>vplsId</th>
+  </tr>
+  {% for entry in entries %}
+  <tr>
+    <td>{{ entry.nodoOrigen }}</td>
+    <td>{{ entry.nodoDestino }}</td>
+    <td>{{ entry.pwId }}</td>
+    <td>{{ entry.localInterface }}</td>
+    <td>{{ entry.remoteInterface }}</td>
+    <td>{{ entry.vlan }}</td>
+    <td>{{ entry.vplsId }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+
+{% endblock %}
